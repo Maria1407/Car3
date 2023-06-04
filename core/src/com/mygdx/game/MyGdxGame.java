@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-//import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.ScreenUtils;
 
 public class MyGdxGame extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -37,8 +37,6 @@ public class MyGdxGame extends ApplicationAdapter {
 		bg.render(batch);
 		obstacles.render(batch);
 		if(!gameOver) {
-			Background car = null;
-			assert car != null;
 			car.render(batch);
 		}
 		else{
@@ -49,15 +47,15 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	public void update(){
 		bg.update();
-//		car.update();
-//		obstacles.update();
-//		for (int i = 0; i < Obstacles.obs.length; i++) {
-//			if(bird.position.y > Obstacles.obs[i].position.y && bird.position.y < Obstacles.obs[i].position.y+50){
-//				if(!Obstacles.obs[i].emptySpace.contains(bird.position)){
-//					gameOver = true;
-//				}
-//			}
-//		}
+		car.update();
+		obstacles.update();
+		for (int i = 0; i < Obstacles.obs.length; i++) {
+			if(car.position.y > Obstacles.obs[i].position.y && car.position.y < Obstacles.obs[i].position.y+50){
+				if(!Obstacles.obs[i].emptySpace.contains(car.position)){
+					gameOver = true;
+				}
+			}
+		}
 //		if(bird.position.x <0 || car.position.x > 600){
 //			gameOver = true;
 //		}

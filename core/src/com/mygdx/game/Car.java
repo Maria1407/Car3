@@ -14,10 +14,10 @@ public class Car {
 
 
     public Car(){
-        img = new Texture("car.png");
+        img = new Texture("car1.png");
         position = new Vector2(100,270);
         vx = 0;
-        gravity = - 0.7f;
+       // gravity = - 0.7f;
     }
 
     public void render(SpriteBatch batch){
@@ -26,11 +26,13 @@ public class Car {
 
     public void update(){
 
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)){
-            vx = 10;
+        if (Gdx.input.isTouched()){
+            int x=Gdx.input.getX();
+            if(x>position.x) vx=10;
+            else vx=-10;
         }
-        vx += gravity;
-        position.y += vx;
+
+        position.x += vx;
     }
 
     public void recreate(){
